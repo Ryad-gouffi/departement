@@ -1,0 +1,6 @@
+#0d0c22 main
+
+#6e6d7a text gray
+
+#9e9ea7 bg gray
+#f3f3f6 bg light gray

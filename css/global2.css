@@ -1,0 +1,14 @@
+:root{
+    --headers:#0d0c22 ;
+    --paragraph:#6e6d7a ;
+    --bg-gray:#9e9ea7 ;
+    --bg-light-gray:#f3f3f6 ;
+    --site-nav-link-hover-color: #7b7194;
+}
+body{
+    font-family:"Mona Sans", sans-serif;
+    color: var(--headers) !important;
+}
+p{
+    color: var(--paragraph);
+}
