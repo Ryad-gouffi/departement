@@ -1,9 +1,10 @@
 header{
-    padding-top: 13px;
+    margin-top: 3px;
 }
 header .container{
     display: flex;
     align-items: center;
+    height: 60px;
 }
 header .container .logo{
     display: inline-block;
@@ -41,7 +42,8 @@ header a.logout{
 }
 header p{
     margin-bottom: 0px;
-    color: var(--paragraph);
+    font-weight: bold;
+    color: black;
 }
 header span{
     font-size: 14px;
@@ -49,7 +51,9 @@ header span{
     text-transform: uppercase;
     line-height: 1.2;
     display: block;
+    color: var(--color);
 }
 header a:hover{
-    color: var(--site-nav-link-hover-color);
+    color: var(--color);
+    transition-duration: .15s;
 }

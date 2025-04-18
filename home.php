@@ -16,16 +16,17 @@
     <link href="css/global.css" rel="stylesheet" />
     <link href="css/global2.css" rel="stylesheet" />
     <link href="css/header.css" rel="stylesheet" />
+    <link href="css/home.css" rel="stylesheet" />
 
 </head>
 
 <body>
     <header>
         <div class="container">
-            <a href="#" class="logo"><img src="picts/departement/logo1removed.png" alt=""></a>
+            <a href="home.php" class="logo"><img src="picts/departement/logo1removed.png" alt=""></a>
             <div class="wrapper">
                 <nav>
-                    <a href="#">Home</a>
+                    <a href="home.php">Home</a>
                     <a href="news.php">News</a>
                     <a href="announcements.php">Announcements</a>
                     <a href="space.php">Student Space</a>
@@ -44,10 +45,13 @@
     <main>
         <div class="container">
             <div class="description">
-                <h1>Computer Science</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad aspernatur id impedit. Esse, officiis itaque!</p>
+                <h1><span class="typewriter">Computer Science</span></h1>
+                <p>Welcome to the Computer Science Department at UMBB. Access course materials, announcements, and key resources all in one place.</p>
             </div>
-            <img src="picts/departement/landing3.png" class="landing">
+            <div class="land-img">
+                <img src="picts/departement/landing3.png" class="landing">
+            </div>
+            
         </div>
 
     </main>

@@ -1,9 +1,16 @@
 :root{
+    --main-color: #2196f3;
+    --main-color-alt: #1787e0;
+    --color:#243971;
     --headers:#0d0c22 ;
     --paragraph:#6e6d7a ;
     --bg-gray:#9e9ea7 ;
     --bg-light-gray:#f3f3f6 ;
     --site-nav-link-hover-color: #7b7194;
+    --time:0.3s;
+}
+*{
+    box-sizing: border-box;
 }
 body{
     font-family:"Mona Sans", sans-serif;

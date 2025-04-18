@@ -1,0 +1,64 @@
+main>h2 {
+    padding: 10px 24px;
+    border: 2px solid black;
+    font-size: 28px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+main .news {
+    width: 800px;
+    margin: 80px auto 0px;
+}
+
+main .newsCard {
+    border: solid 1px var(--bg-secondary);
+    padding:20px 24px;
+    border-radius:6px;
+    margin-bottom: 28px;
+}
+main .newsCard .info> i {
+    flex:1;
+    text-align: end;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+main .info {
+    display: flex;
+}
+
+main .newsCard .pfp {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    border-radius:50%;
+    border:1px solid;
+}
+
+main .wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+}
+
+main .newsCard .author {
+    font-weight: bold;
+    font-size: 15px;
+    color: var(--bg-color);
+}
+
+main .newsCard .date {
+    font-size: 14px;
+    color: var(--bg-gray);
+}
+
+main .newsCard .description {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-top: 16px;
+    margin-bottom: 0;
+    color: black;
+}
