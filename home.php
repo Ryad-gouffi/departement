@@ -28,7 +28,7 @@
                 <nav>
                     <a href="home.php">Home</a>
                     <a href="news.php">News</a>
-                    <a href="announcements.php">Announcements</a>
+                    <a href="events.php">Announcements</a>
                     <a href="space.php">Student Space</a>
                 </nav>
                 <div class="userCard">

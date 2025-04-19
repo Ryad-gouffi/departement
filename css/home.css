@@ -34,6 +34,7 @@ main .land-img img {
     animation: up-and-down 5s linear infinite;
 }
 
+
 @keyframes up-and-down {
 
     0%,
@@ -59,15 +60,16 @@ main h1 .typewriter {
     overflow: hidden;
     white-space: nowrap;
     padding-right: 7px;
-    animation: 
-        cursor .6s step-end infinite alternate, 
-        typewriter 2s steps(16) 1 forwards;
     border-right: solid 5px black;
+    animation: 
+    cursor .3s  infinite step-end alternate, 
+    typewriter 2s steps(16) 1 forwards;
 }
 
 @keyframes cursor {
-    0% { border-color: black; }
-    100% { border-color: transparent; }
+    50% {
+        border-right-color: transparent;
+    }
 }
 
 @keyframes typewriter {

@@ -28,7 +28,7 @@
                 <nav>
                     <a href="home.php">Home</a>
                     <a href="news.php">News</a>
-                    <a href="announcements.php">Announcements</a>
+                    <a href="events.php">Announcements</a>
                     <a href="space.php">Student Space</a>
                 </nav>
                 <div class="userCard">
@@ -46,9 +46,17 @@
         <h2>NEWS</h2>
         <div class="container">
             <div class="news">
+                <div class="postNews">
+                    <div class="info">
+                        <img src="picts/person.png"  alt="" class="pfp">
+                        <input type="text" value="Post something...">
+                        <textarea name="postDesctiption" ></textarea>
+                        <i class="fa-regular fa-paper-plane"></i>
+                    </div>
+                </div>
                 <div class="newsCard" id="01">
                     <div class="info">
-                        <span class="pfp"></span>
+                        <img src="picts/person.png" alt="" class="pfp">
                         <div class="wrapper">
                             <span class="author">yahiatene youcef</span>
                             <span class="date">Mar 4</span>

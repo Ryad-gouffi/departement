@@ -51,7 +51,7 @@ header span{
     text-transform: uppercase;
     line-height: 1.2;
     display: block;
-    color: var(--color);
+    color: var(--main-color-alt);
 }
 header a:hover{
     color: var(--color);
