@@ -1,0 +1,22 @@
+------START-LICENSE-KEY------
+
+Registration_Name=kopew84598 @ lesotica . com
+
+Company=ajlk
+
+Category=Enterprise
+
+Component=XML-Editor, XSLT-Debugger, Saxon-SA
+
+Version=27
+
+Number_of_Licenses=1
+
+Date=04-07-2025
+
+Trial=30
+
+SGN=MCwCFHDDLmVYOPDO8ciJcTWOtvkmSBBdAhQSTclXMlDwvjwj1+k8GjVuaLXtAA\=\=
+
+
+-------END-LICENSE-KEY-------

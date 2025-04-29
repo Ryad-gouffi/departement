@@ -1,0 +1,111 @@
+main {
+    background-color: #ececec;
+    padding-top: 20px;
+    min-height: calc(100vh - 63px);
+    padding-bottom: 50px;
+}
+
+main>h2 {
+    margin-top: 20px;
+    z-index: 10;
+}
+
+main .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+main .box {
+    display: block !important;
+    background-color: white;
+    box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    counter-increment: services;
+    transition: .3s;
+    position: relative;
+    cursor: pointer;
+
+}
+
+main .container .box::before {
+    content: "";
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    top: -3px;
+    background-color: var(--main-color);
+    position: absolute;
+    width: 0;
+    transition: .3s;
+}
+
+main .container .box:hover::before {
+    width: 100%;
+}
+
+main .container .box:hover {
+    transform: translateY(-10px);
+}
+
+main .container .box>i {
+    margin:
+        30px auto 20px;
+    display: block;
+    text-align: center;
+    color: #d5d5d5;
+}
+
+
+.container .box>h3 {
+    text-align: center;
+    margin:
+        20px 0 40px;
+    font-size: 25px;
+    color: var(--main-color);
+}
+
+main .container .box .info {
+    padding:
+        15px;
+    position: relative;
+    background-color: #f9f9f9;
+    text-align: right;
+}
+
+main .container .box .info a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+main .container .box .info::before {
+    content: "0" counter(services);
+    position: absolute;
+    background-color: var(--main-color);
+    color: white;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 95px;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 15px;
+}
+
+main .container .box .info {
+    text-align: right;
+}
+
+main .container .box .info::after {
+    content: "";
+    position: absolute;
+    background-color: #d5d5d5;
+    top: 0;
+    left: 80px;
+    width: 50px;
+    height: calc(100% + 0.4px);
+    transform: skewX(-30deg);
+    text-align: right;
+}

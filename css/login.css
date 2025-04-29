@@ -1,0 +1,352 @@
+body {
+    background-color: var(--bg-color);
+    font-family: "Roboto","Sans-serif";
+}
+body.light {
+    background-color: #F8F8F8;
+}
+
+.fa-sun,
+.fa-moon{
+    display: none;
+    position: absolute;
+    right: 35px;
+    top: 29px;
+    font-size: 18px;
+    color: var(--logo2);
+    cursor: pointer;
+}
+
+.fa-sun.active,
+.fa-moon.active{
+    display: block;
+}
+
+a:focus {
+    outline: none;
+    color: var(--prime-color);
+}
+
+.containerform{
+    margin-top: 64px;
+    width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 3px 0px var(--logo3);
+    padding: 24px 44px;
+    background-color: var(--bg-secondary);
+    border: solid 1px var(--logo3);
+    border-radius: 4px;
+}
+@media (max-width: 575px) {
+    .containerform{
+        max-width: 100%;
+    }
+
+}
+
+@media (min-width: 576px) {
+
+}
+
+.containerform.light{
+    box-shadow: 0px 0px 3px 0px #00c7fc;
+    background-color: white;
+    border: solid 1px var(--second-color);
+}
+
+.containerform .logo a{
+    padding-bottom: 24px;
+    padding-top: 8px;
+    width: 64px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+} 
+.containerform .logo a img{
+    width: 100%;
+} 
+
+.containerform .kite{
+    display: block;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+    padding-bottom: 24px;
+    color: var(--white);
+}
+.containerform.light .kite{
+    color: var(--onelove);
+}
+
+.containerform .data{
+    position: relative;
+}
+
+.containerform .data input{
+    width: 100%;
+    padding: 10px 16px;
+    margin-bottom: 28px;
+    border: solid 1px var(--logo3);
+    background-color: var(--bg-secondary);
+    color: var(--logo1);
+    position: relative;
+    z-index: 1;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 300;
+}
+.containerform.light .data input{
+    border: solid 1px var(--onelove);
+    background-color: var(--white);
+    color: black;
+}
+
+
+.containerform .data input:focus{
+    outline: none;
+    border: solid 1px var(--logo1);
+}
+
+.containerform .data input::placeholder{
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--white);;
+}
+.containerform.light .data input::placeholder{
+    color: rgba(0, 0, 0, 0.582);
+}
+
+.containerform .data .matriculedata {
+    position: relative;
+}
+
+.containerform .data .matriculedata i{
+    position: absolute;
+    top: 11px;
+    right: 11px;
+    cursor: pointer;
+    z-index: 10;
+    color: var(--logo1);
+    transition: .3s;
+}
+.containerform.light .data .matriculedata i{
+    color: var(--onelove);
+}
+
+.containerform .data .matriculedata i.show{
+    color: var(--logo2);
+}
+
+.containerform .data .matriculedata label{
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    z-index: 1;
+    visibility: hidden;
+    background-color: var(--bg-secondary);
+    color: var(--logo3);
+    padding: 0 8px;
+    font-size: 13px;
+    transition: .2s;
+}
+.containerform.light .data .matriculedata label{
+    background-color: white;
+    color: black;
+}
+
+.containerform .data .matriculedata input:focus ~  label,
+.containerform .data .matriculedata input:valid ~  label{
+    position: absolute;
+    visibility: visible;
+    left: 8px;
+    top: -5px;
+}
+
+.containerform input[name="submit"]{
+    border: none;
+    padding: 8px 16px;
+    width: 100%;
+    margin-bottom: 28px;
+    background-color: var(--logo3);
+    border-radius: 4px;
+    color: white;
+    font-size: 18px;
+    transition: .6s;
+}
+.containerform.light input[name="submit"]{
+    background-color: var(--logo1);
+}
+
+.containerform input[name="submit"]:hover{
+    background-color: var(--logo2);
+    cursor: pointer;
+}
+
+.containerform .remember {
+    display: flex;
+    align-items: center;
+    padding-bottom: 24px;
+}
+
+.containerform .remember > label{
+    padding-left: 8px;
+    font-size: 15px;
+    color: var(--white);
+    cursor: pointer;
+}
+.containerform.light .remember > label{
+    color: var(--onelove);
+}
+
+.containerform .forgot{
+    font-size: 12px;
+    color: var(--gray);
+    text-align: center;
+}
+.containerform.light .forgot{
+    color: rgba(0, 0, 0, 0.829);
+}
+.containerform .forgot a{
+    transition: .2s;
+}
+.containerform .forgot a span{
+    color: var(--logo1);
+    font-size: 13px;
+    margin-left: 4px;
+
+}
+
+.containerform .forgot a:hover{
+    color: var(--logo1);
+}
+
+.contacts {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: var(--logo2);
+}
+.contacts a{
+    margin-left: 9px;
+    transition: .3s;
+    transform-origin: center;
+
+}
+.contacts a:hover{
+    color: var(--logo3);
+    transform: scale(1.4);
+}
+
+body.light .contacts a:hover{
+    color: var(--logo1);
+}
+
+.elon-musk{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.elon-musk .elon-musk-IQ{
+    margin-left: 10px;
+}
+
+.containerform form.sign-up  .data input {
+    margin-bottom: 18px;
+}
+
+
+/*form.sign-up  Dropdown Menu signup page*/
+form.sign-up .dropdown{
+    position: relative;
+    margin-bottom: 18px;
+    font-size: 15px !important;
+    color: var(--white);
+}
+
+form.sign-up .dropdown .select{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: transparent;
+    border: 1px solid var(--logo3);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .3s;
+}
+.containerform.light form.sign-up .dropdown .select{
+    border: solid 1px var(--onelove);
+    color: rgba(0, 0, 0, 0.582);
+}
+
+form.sign-up .dropdown .select.open{
+    box-shadow: 0px 0px 4px 0px var(--logo2);
+}
+
+form.sign-up .dropdown .select .arrow {
+    width: 0;
+    height: 0;
+    border-left: solid 5px transparent;
+    border-top: solid 6px var(--white);
+    border-right: solid 5px transparent;
+    transition: .3s;
+}
+
+.containerform.light form.sign-up .dropdown .select .arrow {
+    border-top: solid 6px var(--black);
+}
+
+form.sign-up .dropdown .select .arrow.rotate{
+    transform: rotate(180deg);
+}
+
+form.sign-up .dropdown ul{
+    border-radius: 4px;
+    padding: 12px 8px;
+    position: absolute;
+    width: 100%;
+    z-index: 11;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    opacity: 0;
+    transition: .3s;
+    background-color: var(--bg-color);
+    /* border: 1px solid var(--border); */
+    box-shadow: 0px 0px 4px 1px black;
+}
+.containerform.light form.sign-up .dropdown ul{
+    background-color: var(--bg-color-light);
+    color: black;
+}
+
+form.sign-up .dropdown ul.open-menu{
+    display: block;
+    opacity: 1;
+}
+
+form.sign-up .dropdown ul li {
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.753) inset;
+    /* border: var(--border) solid 1px; */
+    transition: .3s;
+    cursor: pointer;
+
+}
+form.sign-up .dropdown ul li:not(form.sign-up .dropdown ul li:last-of-type){
+    margin-bottom: 8px;
+}
+form.sign-up .dropdown ul li.active {
+    background-color: var(--logo3);
+}
+form.sign-up .dropdown ul li:hover{
+    background-color: var(--bg-secondary);
+}
+.containerform.light form.sign-up .dropdown ul li:hover{
+    background-color: var(--logo2);
+}

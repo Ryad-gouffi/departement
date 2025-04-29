@@ -1,0 +1,96 @@
+main .news {
+    width: 800px;
+    margin: 0px auto;
+    max-width: 100%;
+}
+main .postNews{
+    border-color:var(--paragraph) !important;
+    box-shadow: 0px 1px 3px var(--paragraph);
+}
+main .newsCard,
+main .postNews {
+    border: solid 1px var(--bg-secondary);
+    padding: 20px 24px;
+    border-radius: 6px;
+    margin-bottom: 28px;
+}
+
+main .postNews .info {
+    display: flex;
+    align-items: center;
+}
+
+main .postNews input {
+    flex:1;
+    padding:8px 16px;
+    color: var(--paragraph);
+    transition: var(--time);
+    cursor: pointer;
+    border:none;
+    margin-left: 12px;
+}
+main .postNews input:focus {
+    border: none;
+    outline: none;
+}
+main .postNews input:hover {
+    color: black;
+}
+
+main .postNews .info > i {
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    color: var(--bg-secondary);
+}
+main .postNews textarea {
+    display: none;
+    flex: 1;
+    /* border:none; */
+    padding: 8px 16px;
+}
+
+main .postNews i.fa-paper-plane {}
+
+
+main .newsCard .info>i {
+    flex: 1;
+    text-align: end;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+main .info {
+    display: flex;
+}
+
+main .newsCard .pfp,
+main .postNews .pfp {
+    width: 45px;
+
+}
+
+main .wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+}
+
+main .newsCard .author {
+    font-weight: bold;
+    font-size: 15px;
+    color: var(--bg-color);
+}
+
+main .newsCard .date {
+    font-size: 14px;
+    color: var(--bg-gray);
+}
+
+main .newsCard .description {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-top: 16px;
+    margin-bottom: 0;
+    color: black;
+}

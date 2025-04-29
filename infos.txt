@@ -1,0 +1,7 @@
+#0d0c22 main
+--main-color: #2196f3;
+--main-color-alt: #1787e0;
+#6e6d7a text gray
+
+#9e9ea7 bg gray
+#f3f3f6 bg light gray

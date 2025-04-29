@@ -1,0 +1,78 @@
+/* Home page */
+main .container {
+    display: flex;
+    height: calc(100vh - 63px);
+    align-items: center;
+}
+
+main .description {
+    flex: 1;
+    margin-top: -120px;
+}
+
+main .description h1 {
+    color: var(--color);
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+}
+
+main .description p {
+    max-width: 550px;
+    padding-right: 16px;
+    line-height: 1.7;
+    font-size: 22px;
+}
+
+
+main .land-img img {
+    display: block;
+    width: 450px;
+    margin-right: 16px;
+    position: relative;
+    animation: up-and-down 5s linear infinite;
+}
+
+
+@keyframes up-and-down {
+
+    0%,
+    100% {
+        top: 0;
+    }
+
+    50% {
+        top: -50px;
+    }
+}
+
+
+main h1 {
+    width: fit-content;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Move animation to the inner span */
+main h1 .typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 7px;
+    border-right: solid 5px black;
+    animation: 
+    cursor .3s  infinite step-end alternate, 
+    typewriter 2s steps(16) 1 forwards;
+}
+
+@keyframes cursor {
+    50% {
+        border-right-color: transparent;
+    }
+}
+
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}

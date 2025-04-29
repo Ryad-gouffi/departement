@@ -1,0 +1,142 @@
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 300;
+    /* light weight */
+    font-style: normal;
+    src: url('../fonts/Roboto-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 400;
+    /* regular weight */
+    font-style: normal;
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 400;
+    /* regular italic weight */
+    font-style: italic;
+    src: url('../fonts/Roboto-Italic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 500;
+    /* medium weight */
+    font-style: normal;
+    src: url('../fonts/Roboto-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 500;
+    /* medium italic weight */
+    font-style: italic;
+    src: url('../fonts/Roboto-MediumItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 700;
+    /* bold weight */
+    font-style: normal;
+    src: url('../fonts/Roboto-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 700;
+    /* bold italic weight */
+    font-style: italic;
+    src: url('../fonts/Roboto-BoldItalic.ttf') format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --prime-color: #0f748f;
+    --second-color: #00c7fc;
+    --mediafire: #0077FF;
+    --notion-one: #202020;
+    --notion-two: #191919;
+    --onelove: #161515;
+    --logo1: #00C7FC;
+    --logo2: #0F748F;
+    --bg-color: #081028;
+    --gray:#AEB9E1;
+    --logo3:#CB3CFF;
+    --bg-secondary:#0A1330;
+    --white:white;
+    --border:#343B4F;
+    --charts-bg:#0B1739;
+
+    --bg-color-light: white;
+    --bg-secondary-light:#eee;
+    --black:black;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+body{
+    line-height: initial;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+ul{
+    padding: 0px;
+    margin: 0px;
+}
+a:visited{
+    text-decoration: none;
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+    .container {
+        max-width: 750px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container {
+        max-width: 970px;
+    }
+}
+
+/* kinda very large */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1170px;
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#error-span{
+    color: red;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    padding-bottom: 16px;
+}

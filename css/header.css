@@ -1,0 +1,59 @@
+header{
+    margin-top: 3px;
+}
+header .container{
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+header .container .logo{
+    display: inline-block;
+}
+header .container .logo img{
+    width: 40px;
+}
+header .container > .wrapper {
+    margin-left: 24px;
+
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    align-items: center;
+}
+
+header .container > .wrapper nav a {
+    font-weight: 600;
+    padding: 16px 10px;
+}
+
+header .userCard{
+    display: flex;
+    align-items: center;
+}
+header .userCords{
+    margin-left: 15px;
+}
+header i{
+    font-size: 32px;
+}
+
+header a.logout{
+    margin-left: 20px;
+}
+header p{
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: black;
+}
+header span{
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+    display: block;
+    color: var(--main-color-alt);
+}
+header a:hover{
+    color: var(--color);
+    transition-duration: .15s;
+}

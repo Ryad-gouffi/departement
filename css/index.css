@@ -1,0 +1,471 @@
+body{
+    background-color: var(--bg-color);
+    font-family: "Roboto","Sans-serif";
+    line-height: initial;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+header .container::before{
+    content: '';
+    height: 1px;
+    width: calc(100% - 30px);
+    background-color: var(--logo2);
+
+    position: absolute;
+    left: 15px;
+    top: 100%;
+}
+
+header .container > a {
+    width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header .container a img{
+    width: 100%;
+}
+
+header .container .userCard{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+header .container .userCard i.fa-user-graduate{
+    font-size: 40px;
+    color: var(--logo1);
+}
+
+
+header .container .userCard .userCords{
+    margin-left: 15px;
+}
+
+header .container .userCard .userCords p{
+    font-size: 16px;
+    color: white;
+    margin-bottom: 3px;
+    /* letter-spacing: 1px; */
+}
+header .container .userCard .userCords span{
+    font-size: 18px;
+    /* font-weight: bold; */
+    text-transform: uppercase;
+    color: var(--logo3);
+    
+}
+header .container a.logout{
+    align-self: flex-end;
+    font-size: 28px;
+    margin-left: 20px;
+    color: var(--logo2);
+    cursor: pointer;
+}
+header .container a.logout:hover{
+    color: var(--logo1);
+}
+main{
+    margin-top: 76px;
+}
+main .container .tabs button {
+    color: white;
+    background-color: var(--bg-secondary);
+    border: none;
+    /* border-radius: 8px; */
+    padding: 12px 24px;
+    font-size: 18px;
+    transition: .3s;
+}
+main .container .tabs button:hover{
+    background-color: var(--logo2) ;
+    cursor: pointer;
+}
+
+main .container .tabs button.active {
+    background-color: var(--logo2);
+}
+main .container div.page{
+    border: solid 1px #0B1739;
+    background-color: var(--bg-secondary);
+    box-shadow: 0px 0px 8px #010511;
+    padding: 12px 28px;
+    margin-bottom: 40px;
+    color: white;
+    display: none;
+
+}
+main .container div.page.active{
+    display: block;
+    
+}
+
+
+main .container form{
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ----------------------------------- */
+
+main .container .kite{
+    display: block;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 24px;
+    color: var(--white);
+    margin-top: 16px;
+}
+
+main .container .data{
+    position: relative;
+}
+
+main .container .data input{
+    width: 100%;
+    padding: 10px 16px;
+    margin-bottom: 28px;
+    border: solid 1px var(--logo3);
+    position: relative;
+    z-index: 1;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 300;
+    background-color: transparent;
+    color: var(--logo1);
+}
+
+
+main .container .data input:focus{
+    outline: none;
+    border: solid 1px var(--prime-color);
+}
+
+main .container .data input::placeholder{
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--gray);
+}
+main .container .data .matriculedata {
+    position: relative;
+}
+
+main .container .data .matriculedata label{
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    z-index: 1;
+    visibility: hidden;
+    color: var(--logo3);
+    background-color: var(--bg-secondary);
+    padding: 0 8px;
+    font-size: 13px;
+    transition: .2s;
+}
+
+main .container .data .matriculedata input:focus ~  label,
+main .container .data .matriculedata input.active ~  label{
+    position: absolute;
+    visibility: visible;
+    left: 8px;
+    top: -5px;
+}
+
+main .container input[name="submit"]{
+    border: none;
+    display: block;
+    padding: 8px 16px;
+    width: 100%;
+    margin-bottom: 28px;
+    background-color: var(--logo3);
+    border-radius: 4px;
+    color: white;
+    font-size: 18px;
+    transition: .3s;
+}
+
+main .container input[name="submit"]:hover{
+    background-color: var(--logo2);
+    cursor: pointer;
+}
+
+main .container span.on{
+    background-color: transparent;
+    width: 63px;
+    height: 28px;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    outline: solid 1px var(--logo3);
+}
+
+main .container span.on.active{
+    background-color: var(--logo2);
+    outline: none;
+}
+main .container span.on.active >  span.no{
+    display: none;
+}
+main .container span.on.active >  span.yes{
+    display: inline;
+}
+
+main .container span.yes,main .container span.no{
+    font-size: 14px;
+    position: absolute;
+}
+main .container span.no{
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+main .container span.yes{
+    display: none;
+    right: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+main .container span.off{
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translate(0,-50%);
+    right: 6px;
+    transition-duration: .6s;
+}
+
+main .container span.on.active >  span.off{
+    transform: translate(-28px, -50%);
+}
+
+main .container .remember {
+    display: flex;
+    align-items: center;
+    padding-bottom: 24px;
+}
+
+main .container .remember > label{
+    padding-left: 8px;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+main .container textarea{
+    font-size: 14px;
+    color: white;
+    padding: 10px 16px;
+    background-color: transparent;
+    width: 100%;
+    height: 120px;
+    max-width: 100%;
+    line-height: 1.3;
+    outline: none;
+    border: solid 1px var(--logo3);
+    margin-bottom: 25px;
+}
+main .container textarea:focus{
+    border: solid 1px var(--logo2);
+}
+main .container textarea::placeholder{
+    color: var(--gray);
+    font-size: 14px;
+    text-indent: 0;
+    
+}
+/* Dropdown Menu */
+.dropdown{
+    position: relative;
+    margin-bottom: 28px;
+}
+
+.dropdown .select{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: var(--logo3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .3s;
+}
+.dropdown .select.open{
+    box-shadow: 0px 0px 4px 0px var(--logo2);
+}
+.dropdown .select:hover{
+    background-color: var(--logo1);
+}
+.dropdown .select .arrow {
+    width: 0;
+    height: 0;
+    border-left: solid 5px transparent;
+    border-top: solid 6px var(--onelove);
+    border-right: solid 5px transparent;
+    transition: .3s;
+}
+.dropdown .select .arrow.rotate{
+    transform: rotate(180deg);
+}
+
+.dropdown ul{
+    background-color: var(--onelove);
+    border-radius: 8px;
+    padding: 12px 8px;
+    position: absolute;
+    width: 100%;
+    z-index: 11;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    opacity: 0;
+    transition: .3s;
+    background-color: var(--bg-color);
+    box-shadow: 0px 0px 4px 1px black;
+}
+.dropdown ul.open-menu{
+    display: block;
+    opacity: 1;
+}
+
+.dropdown ul li {
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0px 0px 4px 1px #0000008a inset;
+    transition: .3s;
+    cursor: pointer;
+
+}
+.dropdown ul li:not(.dropdown ul li:last-of-type){
+    margin-bottom: 8px;
+}
+.dropdown ul li.active {
+    background-color: var(--logo3);
+}
+.dropdown ul li:hover{
+    background-color: var(--logo2);
+}
+
+/* page 2 */
+main .container .page2{
+    min-height: 400px;
+}
+main .container .page2 table{
+    width: 100%;
+    margin-top: 28px;
+    border-collapse: separate;
+    text-align: center;
+}
+
+main .container .page2 thead{
+    background-color: var(--logo2);
+}
+
+main .container .page2 thead th{
+    padding: 12px 16px;
+    font-size: 16px;
+}
+
+main .container .page2 tbody{
+    text-align: center;
+}
+main .container .page2 tbody td{
+    padding: 8px 12px;
+    font-size: 14px;
+}
+main .container .page2 tbody td > i{
+    margin-right: 8px;
+}
+main .container .page2 tbody tr td i.fa-circle-check{
+    color: green;
+}
+main .container .page2 tbody tr td i.fa-arrows-rotate{
+    color: var(--mediafire);
+}
+main .container .page2 tbody i.fa-circle-xmark{
+    color: red;
+}
+
+main .container .page2 tbody i.fa-trash-can{
+    color: red;
+    cursor: pointer;
+}
+main .container .page2 tbody i.fa-trash-can:hover{
+    color: rgb(128, 0, 0);
+}
+
+
+#urgentdate {
+    display: none;
+}
+#urgentdate.active {
+    display: block;
+    margin-bottom: 24px;
+}
+
+/* --------------- Modal CSS ------------------- */
+
+main .modal .modal-content{
+    background-color: var(--bg-color);
+}
+main .modal .modal-content .modal-header{
+    border-bottom: solid 1px var(--logo2);
+}
+main .modal .modal-content .modal-header i{
+    margin-right: 12px;
+    font-size: 22px;
+}
+main .modal .modal-content .modal-body{
+    color: var(--white);
+}
+main .modal .modal-content .modal-footer{
+    border-top: solid 1px var(--logo2);
+}
+main .modal .modal-content .modal-footer #modalclosebtn{
+    color: #fffdfd;
+    background-color: transparent;
+    border: solid 1px var(--gray);
+}
+
+#modal-row-fullname{
+    margin-top: 8px;
+    color: var(--logo3);
+}
+
+
+/* --------------- END OF Modal CSS ------------------- */
+@media (max-width: 575px) {
+
+    body header .container > a{
+        display: none;
+    }
+    header .container .userCard {
+        width: 100%;
+    }
+    header .container a.logout {
+        margin-left: auto;
+    }
+    main .container .tabs button {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container{
+        min-width: fit-content;
+    }
+}
