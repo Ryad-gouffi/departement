@@ -2,7 +2,7 @@
 
 class Admins {
     private $conn;
-    private $table = 'admins';
+    private $table = 'user';
 
     public function __construct($db) {
         $this->conn = $db;

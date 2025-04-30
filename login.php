@@ -15,8 +15,8 @@
     <i id="sun" class="fa-solid fa-sun active"></i>
     <?php 
     session_start();
-    if(isset($_SESSION["matricule"]))
-        header("location:index.php");
+    if(isset($_SESSION["role"]))
+        header("location:home.php");
     ?>
     <main>
         <div class="container">
@@ -35,8 +35,8 @@
                     ?>
                     <div class="data">
                         <div class="matriculedata">
-                            <input type="text" name ="matricule" id="matricule" placeholder="Matricule" required>
-                            <label for="matricule">Matricule:</label>
+                            <input type="text" name ="userID" id="matricule" placeholder="Matricule or Email" required>
+                            <label for="matricule">Matricule or Email:</label>
                         </div>
                         <div class="matriculedata">
                             <input id="password" type="password" name="password" placeholder="Password" required>

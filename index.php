@@ -6,7 +6,7 @@ require 'php/demandes.php';
 
 session_start() ;
 
-if(!isset($_SESSION["matricule"])){
+if(!isset($_SESSION["role"]) || $_SESSION["role"] == "admin"){
     header("location:login.php");
 }
 

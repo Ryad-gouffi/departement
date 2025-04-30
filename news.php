@@ -1,7 +1,11 @@
 <?php 
     session_start();
+    if(!isset($_SESSION["role"])){
+        header("location:login.php");
+    }
     require 'php/models.php';
     require 'php/users.php';
+    require 'php/admins.php';
     require 'php/news.php';
     $db = new Database();
     $dbconn = $db->connect();
@@ -43,7 +47,18 @@
                     <i class="fa-solid fa-user-graduate"></i>
                     <div class="userCords">
                         <p>Welcome</p>
-                        <span>Gouffi mohamed ryad</span>
+                        <?php 
+                            if($_SESSION["role"]=="student"){
+                                $user = new User($dbconn);
+                                $result = $user->user_data($_SESSION["matricule"]);
+                                echo "<span>$result[name] $result[surname]</span>";
+                            }
+                            else if($_SESSION["role"]=="teacher" || $_SESSION["role"]=="admin"){
+                                $user = new Admins($dbconn);
+                                $result = $user->admin_data($_SESSION["email"]);
+                                echo "<span>$result[fullname]</span>";
+                            }
+                        ?>
                     </div>
                     <a class="logout" href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </div>
@@ -60,8 +75,7 @@
                 <div class="postNews">
                     <div class="info">
                         <img src="picts/person.png"  alt="" class="pfp">
-                        <input type="text" value="Post something...">
-                        <textarea name="postDesctiption" ></textarea>
+                        <textarea id="postDesctiption" name="postDesctiption" value="Post something..." rows="1" ></textarea>
                         <i class="fa-regular fa-paper-plane"></i>
                     </div>
                 </div>
@@ -84,24 +98,15 @@
                     </div>
                 <?php endforeach;?>
                 
-                <!-- <div class="newsCard" id="01">
-                    <div class="info">
-                        <img src="picts/person.png" alt="" class="pfp">
-                        <div class="wrapper">
-                            <span class="author">yahiatene youcef</span>
-                            <span class="date">Mar 4</span>
-                        </div>
-                        <i class="fa-solid fa-ellipsis"></i>
-                    </div>
-
-                    <p class="description">Salem
-                        Saha Ramdhankoum
-                        La consultation des copies d'examens est programmé demain matin (05/02/2025) à 9H30 bloc 4 RDC
-                    </p>
-                </div> -->
-                
             </div>
         </div>
     </main>
+    <script>
+    const textarea = document.getElementById("postDesctiption");
 
+    textarea.addEventListener("input", () => {
+    textarea.style.height = "auto"; // reset height
+    textarea.style.height = (textarea.scrollHeight + 4) + "px"; // adjust height
+    });
+    </script>
 </body>

@@ -1,7 +1,7 @@
 <?php 
     session_start();
-    if(!isset($_SESSION["email"])){
-        header("location:admin.php");
+    if(!isset($_SESSION["role"]) && $_SESSION["role"] != "admin"){
+        header("location:login.php");
     }
 
     require 'php/models.php';

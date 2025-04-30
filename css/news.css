@@ -17,24 +17,15 @@ main .postNews {
 
 main .postNews .info {
     display: flex;
-    align-items: center;
+    align-items: start;
+    position: relative;
 }
 
-main .postNews input {
-    flex:1;
-    padding:8px 16px;
-    color: var(--paragraph);
-    transition: var(--time);
-    cursor: pointer;
-    border:none;
-    margin-left: 12px;
-}
-main .postNews input:focus {
-    border: none;
+
+main .postNews textarea:focus {
     outline: none;
-}
-main .postNews input:hover {
     color: black;
+    border-color: var(--bg-secondary);
 }
 
 main .postNews .info > i {
@@ -42,12 +33,25 @@ main .postNews .info > i {
     margin-right: 10px;
     cursor: pointer;
     color: var(--bg-secondary);
+    margin-left: 10px;
+    position: absolute;
+    right: 0px;
+    bottom: 12px;
 }
+
 main .postNews textarea {
-    display: none;
+    box-sizing: border-box; 
     flex: 1;
-    /* border:none; */
     padding: 8px 16px;
+    resize: none;
+    line-height: 24px;
+    height: 44px;
+    margin-left: 12px;
+    color: var(--paragraph);
+    transition: var(--time);
+    cursor: pointer;
+    overflow: hidden;
+    border: solid 1px var(--paragraph);
 }
 
 main .postNews i.fa-paper-plane {}

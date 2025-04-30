@@ -21,26 +21,31 @@ try {
     switch ($target) {
         case 'login':
             if (isset($_POST['submit'])) {
-                if (!empty($_POST['matricule']) && !empty($_POST['password'])) {
-                    if(!ctype_digit($_POST["matricule"])){
-                        $_SESSION["Error"] = "matricule incorrect";
+                if (!empty($_POST['userID']) && !empty($_POST['password'])) {
+                    if(filter_var($_POST["userID"], FILTER_VALIDATE_EMAIL)){
+                        $result = $admin->admin_data($_POST["userID"]);
+                    }
+                    else if (ctype_digit($_POST["userID"])){
+                        $result = $user->user_data($_POST["userID"]);  
+                    }
+                    else{
+                        $_SESSION["Error"] = "matricule / email incorrect";
                         header("location:../login.php");
                         die();
                     }
-        
-                    $result = $user->user_data($_POST["matricule"]);  // check if user exists, and fetch all the data
-        
+
                     if ($result) {
                         if ($_POST["password"] === $result["password"]) {
-                            $_SESSION["matricule"] = $result["matricule"];
-                            header("location:../index.php");
+                            $_SESSION["role"] = $result["matricule"] ? "student" : $result["role"];
+                            $_SESSION["role"] == "student" ? ($_SESSION["matricule"] = $_POST["userID"]) : ($_SESSION["email"] = $_POST["userID"]);
+                            header("location:../home.php");
                             die();
                         } else {
                             $_SESSION["Error"] = "wrong password";
                         }
                     }
                     else{
-                        $_SESSION["Error"] = "matricule doesn't exist";
+                        $_SESSION["Error"] = "matricule / email doesn't exist";
                     }
                 } else {
                     $_SESSION["Error"] = "please fill in all the informations";
@@ -127,41 +132,6 @@ try {
                     die();
                 }
                 header("location:../analytics.php");
-            }
-            break;
-        case 'loginAsAdmin':
-            if (isset($_POST['submit'])) {
-                if ($_POST["email"] && $_POST["password"]) {
-                    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-                        $_SESSION["Error"] = "Invalid email format.";
-                        header("location:../admin.php");
-                        die();
-                    }
-        
-                    $result = $admin->admin_data($_POST["email"]);  // check if admin exists, and fetch all the data
-        
-                    if ($result) {
-                        if ($_POST["password"] === $result["password"]) {
-                            $_SESSION["email"] = $result["email"];
-                            header("location:../analytics.php");
-                        } else {
-                            $_SESSION["Error"] = "wrong password";
-                            header("location:../admin.php");
-                            die();
-                        }
-                    }
-                    else{
-                        $_SESSION["Error"] = "Email doesn't exist";
-                        header("location:../admin.php");
-                        die();
-                    }
-                } else {
-                    $_SESSION["Error"] = "please fill in all the informations";
-                    header("location:../admin.php");
-                    die();
-                }
-            } else {
-                die("Submit Button was not pressed");
             }
             break;
         case 'sign-up':

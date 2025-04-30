@@ -2,8 +2,8 @@
 session_start();
 require 'php/models.php';
 require 'php/admins.php';
-if(!isset($_SESSION["email"])){
-    header("location:admin.php");
+if(!isset($_SESSION["role"]) || $_SESSION["role"] != "admin"){
+    header("location:login.php");
 }
 ?>
 <!DOCTYPE html>

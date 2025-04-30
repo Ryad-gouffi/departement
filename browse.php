@@ -1,12 +1,19 @@
 <?php
 session_start();
+if(!isset($_SESSION["role"])){
+    header("location:login.php");
+}
+require 'php/models.php';
+require 'php/admins.php';
+require 'php/users.php';
+
 // browse.php
-$pdo = new PDO("mysql:host=localhost;dbname=users;charset=utf8", "ryad", "ryad", [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-]);
+$db = new Database();
+$dbconn = $db->connect();
+
 $currentPath = isset($_GET['path']) ? $_GET['path'] : '';
 // Get current folder contents from DB
-$stmt = $pdo->prepare("SELECT * FROM files WHERE path = ?");
+$stmt = $dbconn->prepare("SELECT * FROM files WHERE path = ?");
 $stmt->execute([$currentPath]);
 $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -73,7 +80,19 @@ $breadcrumb = implode(' / ', $breadcrumbLinks);
                     <i class="fa-solid fa-user-graduate"></i>
                     <div class="userCords">
                         <p>Welcome</p>
-                        <span>Gouffi mohamed ryad</span>
+                        <?php 
+                            if($_SESSION["role"]=="student"){
+                                $user = new User($dbconn);
+                                $result = $user->user_data($_SESSION["matricule"]);
+                                echo "<span>$result[name] $result[surname]</span>";
+                            }
+                            else if($_SESSION["role"]=="teacher" || $_SESSION["role"]=="admin"){
+                                $user = new Admins($dbconn);
+                                $result = $user->admin_data($_SESSION["email"]);
+                                echo "<span>$result[fullname]</span>";
+                            }
+                            $dbconn = null;
+                        ?>
                     </div>
                     <a class="logout" href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </div>
