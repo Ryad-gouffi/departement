@@ -59,6 +59,36 @@ $breadcrumb = implode(' / ', $breadcrumbLinks);
     <link href="css/global2.css" rel="stylesheet" />
     <link href="css/header.css" rel="stylesheet" />
     <style>
+        .containerbtns{
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 18px;
+            align-items: center;
+            font-size: 14px;
+        }
+        .containerbtns span{
+            margin-left: 12px;
+        }
+        .createfolder{
+            margin-left: 8px;
+            display: flex;
+            border: solid 1px var(--paragraph);
+            padding: 4px 8px;
+            border-radius: 6px;
+            align-items: center;
+            cursor: pointer;
+        }
+        .uploadbtn{
+            display: inline-block;
+            background-color: var(--main-color-alt);
+            color: white;
+            padding: 5px 9px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        i.fa-folder-plus{
+            color: var(--paragraph);
+        }
         table { width: 100%; border-collapse: collapse; }
         th, td { padding: 8px; border-bottom: 1px solid #ccc; }
         th { text-align: left; background: #f2f2f2; }
@@ -105,13 +135,18 @@ $breadcrumb = implode(' / ', $breadcrumbLinks);
 
             
             <p>Path: <?= $breadcrumb ?: '/' ?></p>
-            <?php if($_SESSION["role"]=="teacher"):?>
-                <div class="uploadbtn" data-bs-toggle="modal" data-bs-target="#uploadFile">
-                    <i class="fa-solid fa-upload"></i>
-                    <span>Upload</span>
+            <?php if($_SESSION["role"]=="teacher" && $section=="courses" || $_SESSION["role"]=="admin" && $section!="courses"):?>
+                <div class="containerbtns">
+                    <div class="uploadbtn" data-bs-toggle="modal" data-bs-target="#uploadFile">
+                        <i class="fa-solid fa-upload"></i>
+                        <span>Upload</span>
+                    </div>
+                    <div class="createfolder" data-bs-toggle="modal" data-bs-target="#createFolder">
+                        <i class="fa-solid fa-folder-plus"></i>
+                        <span>New folder</span>
+                    </div>
                 </div>
-                <i class="fa-solid fa-folder-plus" data-bs-toggle="modal" data-bs-target="#createFolder"></i>
-            <?php endif?>
+            <?php endif;?>
             <table>
                 <tr>
                     <th>Name</th>
@@ -169,7 +204,7 @@ $breadcrumb = implode(' / ', $breadcrumbLinks);
                     <form action="manager/upload.php" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                             <input type="hidden" name="path" value="<?= htmlspecialchars($currentPath) ?>">
-                            <input type="hidden" name="author" value="<?= $_SESSION["name"] ?>">
+                            <input type="hidden" name="author" value="<?= $result["fullname"] ?>">
                             <input type="text" name="description" placeholder="Description">
                             <input type="file" name="file" required>
                         </div>

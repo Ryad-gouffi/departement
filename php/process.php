@@ -1,6 +1,8 @@
 <?php
 session_start();
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 if(!($_SERVER["REQUEST_METHOD"]==="POST")){
     echo "NO POST REQUEST SENT";
     die();
@@ -10,13 +12,17 @@ require 'models.php';
 require 'users.php';
 require 'admins.php';
 require 'demandes.php';
+require 'news.php';
+require 'events.php';
 
 try {
     $db = new Database();
     $dbconn = $db->connect();
     $user = new User($dbconn);
     $demand = new Demandes($dbconn);
+    $news = new News($dbconn);
     $admin = new Admins($dbconn);
+    $events = new Events($dbconn);
     $target = $_POST['target'] ?? '';
     switch ($target) {
         case 'login':
@@ -36,8 +42,9 @@ try {
 
                     if ($result) {
                         if ($_POST["password"] === $result["password"]) {
-                            $_SESSION["role"] = $result["matricule"] ? "student" : $result["role"];
+                            $_SESSION["role"] = isset($result["matricule"]) ? "student" : $result["role"];
                             $_SESSION["role"] == "student" ? ($_SESSION["matricule"] = $_POST["userID"]) : ($_SESSION["email"] = $_POST["userID"]);
+                            $_SESSION["id"] = $result["id"];
                             header("location:../home.php");
                             die();
                         } else {
@@ -99,11 +106,12 @@ try {
         case 'addAdmin':
             $fullname = trim($_POST["fullname"]);
             $email = trim($_POST["email"]);
+            $role = trim($_POST["role"]);
             $password = $_POST["password"];
             $confirmpassword = $_POST["confirm-pass"];
             
-            if(isset($_POST["submit"]) && isset($fullname) && isset($email) && isset($password) && isset($confirmpassword)){
-                if (empty($fullname) || empty($email) || empty($password) || empty($confirmpassword)) {
+            if(isset($_POST["submit"]) && isset($role) && isset($fullname) && isset($email) && isset($password) && isset($confirmpassword)){
+                if (empty($fullname) ||empty($role)|| empty($email) || empty($password) || empty($confirmpassword)) {
                     $_SESSION["Error"] = "All fields are required.";
                     header("location:../adminsgestion.php");
                     die();
@@ -125,7 +133,7 @@ try {
                     header("location:../adminsgestion.php");
                     die();
                 }
-                $result2 = $admin->add_admin($fullname,$email,$password);
+                $result2 = $admin->add_admin($fullname,$email,$password,$role);
                 if($result2 == 0){
                     $_SESSION["Error"] = "something went wrong and the admin wasn't added!";
                     header("location:../adminsgestion.php");
@@ -177,6 +185,43 @@ try {
                     die();
                 }
                 header("location:../login.php");
+            }
+            break;
+        case 'addnews':
+            if(isset($_POST["postDesctiption"])){
+                $content = trim($_POST["postDesctiption"]);
+                if(empty($content)){
+                    header("location:../news.php");
+                    die();
+                }
+                $result = $news->add_news($content,$_SESSION["id"],0);
+                header("location:../news.php");
+            }
+            break;
+        case 'addEvents':
+            if(isset($_POST["eventtitle"]) && isset($_POST["eventdesc"])){
+                $title = trim($_POST["eventtitle"]);
+                $content = trim($_POST["eventdesc"]);
+                if(empty($content) || empty($title) ){
+                    header("location:../events.php");
+                    die();
+                }
+                $path = '';
+                if (isset($_FILES['eventimg']) && $_FILES['eventimg']['error'] === UPLOAD_ERR_OK) {
+                    $uploadDir = __DIR__ . '/uploads/eventspict/' . ($path ? $path . '/' : '');
+                    if (!is_dir($uploadDir)) {
+                        mkdir($uploadDir, 0777, true);
+                    }
+                    $fileName = basename($_FILES['eventimg']['name']);
+                    $filePath = $uploadDir . $fileName;
+                    if (move_uploaded_file($_FILES['eventimg']['tmp_name'], $filePath)) {
+                        $result = $events->add_event($title,$content,$fileName);
+                    }
+                }
+                header("location:../events.php");
+            }
+            else{
+                echo "title and description not set!";
             }
             break;
         default:

@@ -14,6 +14,7 @@ foreach ($breadcrumbParts as $part) {
         // Link the first part to a specific PHP file
         $breadcrumbLinks[] = "<a href='year.php?path=$part'>" . htmlspecialchars($part) . "</a>";
         $tmpPath = $part;
+        $section =  $part;
         $first = false;
     } else {
         $tmpPath .= '/' . $part;

@@ -74,8 +74,10 @@ moon.addEventListener("click",()=>{
 // ------------------------------ Delete Button Modal
 let targetrow;
 let request_id;
-let deletebuttons = document.querySelectorAll("#page2 i.fa-trash-can");
+let deletebuttons = document.querySelectorAll(".page2 i.fa-trash-can");
 let confirmdeletebtn = document.getElementById("modaldeletebtn");
+console.log(deletebuttons);
+
 deletebuttons.forEach(deletebtn=>{
     deletebtn.addEventListener("click",()=>{
         targetrow = deletebtn.closest(".admin");

@@ -73,11 +73,14 @@
                 if($_SESSION["role"]=="teacher"):
                 ?>
                 <div class="postNews">
+                    <form action="php/process.php" method="post" id="news">
                     <div class="info">
-                        <img src="picts/person.png"  alt="" class="pfp">
-                        <textarea id="postDesctiption" name="postDesctiption" value="Post something..." rows="1" ></textarea>
-                        <i class="fa-regular fa-paper-plane"></i>
-                    </div>
+                            <input type="hidden" name="target" value="addnews">
+                            <img src="picts/person.png"  alt="" class="pfp">
+                            <textarea required id="postDesctiption" name="postDesctiption" placeholder="Post something..." rows="1" ></textarea>
+                            <i class="fa-regular fa-paper-plane" id="addnews"></i>
+                        </div>
+                    </form>
                 </div>
                 <?php endif;?>
                 <?php 
@@ -89,7 +92,7 @@
                         <div class="info">
                             <img src="picts/person.png" alt="" class="pfp">
                             <div class="wrapper">
-                                <span class="author"><?=$value['news_publisher']?></span>
+                                <span class="author"><?=$value['fullname']?></span>
                                 <span class="date"><?=$value['news_date_posted']?></span>
                             </div>
                             <i class="fa-solid fa-ellipsis"></i>
@@ -101,12 +104,5 @@
             </div>
         </div>
     </main>
-    <script>
-    const textarea = document.getElementById("postDesctiption");
-
-    textarea.addEventListener("input", () => {
-    textarea.style.height = "auto"; // reset height
-    textarea.style.height = (textarea.scrollHeight + 4) + "px"; // adjust height
-    });
-    </script>
+    <script src="js/news.js"></script>
 </body>

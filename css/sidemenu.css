@@ -7,6 +7,13 @@ body{
     display: flex;
     font-family: "Roboto","Sans-serif";
 }
+.side-menu #logo img{
+    width: 40px;
+}
+.side-menu .minimize{
+    position: relative;
+    top: -2px;
+}
 .side-menu{
     display: flex;
     flex-direction: column;

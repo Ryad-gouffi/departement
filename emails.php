@@ -82,13 +82,18 @@
                         $user = new Admins($dbconn);
                         $result = $user->all_admins();
                         
-                        foreach ($result as $key => $value):?>
+                        foreach ($result as $key => $value):
+                            if($value['role']=="teacher"):
+                        ?>
+                        
                         <tr>
                             <td><?= $value['fullname'] ?></td>
                             <td><?= $value['fullname'] ?></td>
                             <td><?= $value['email'] ?></td>
                         </tr>
-                        <?php endforeach;?>
+                        <?php 
+                        endif;
+                        endforeach;?>
                     </tbody>
                 </table>
             </div>

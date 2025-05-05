@@ -28,7 +28,7 @@ main .postNews textarea:focus {
     border-color: var(--bg-secondary);
 }
 
-main .postNews .info > i {
+main .postNews .info  i {
     font-size: 20px;
     margin-right: 10px;
     cursor: pointer;
@@ -49,12 +49,10 @@ main .postNews textarea {
     margin-left: 12px;
     color: var(--paragraph);
     transition: var(--time);
-    cursor: pointer;
     overflow: hidden;
     border: solid 1px var(--paragraph);
+    border-radius: 6px;
 }
-
-main .postNews i.fa-paper-plane {}
 
 
 main .newsCard .info>i {

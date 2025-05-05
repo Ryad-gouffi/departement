@@ -24,7 +24,10 @@ require 'php/admins.php';
 <body class="d-flex">
     <div class="side-menu" id="side-menu">
         <div class="header">
-            <a href="home.php" id="logo"><img src="picts/departement/logo1removed.png" alt=""></a>
+            <div class="logo">
+                <a href=""><img src="picts/newlogo.svg" alt=""></a>
+                <span>ZED</span>
+            </div>
             <div class="minimize" id="minimize">
                 <i class="fa-solid fa-angle-left"></i>
                 <i class="fa-solid fa-angle-right"></i>
@@ -53,7 +56,7 @@ require 'php/admins.php';
                             <a href="requests.php?level=5"><li>M2</li></a>
                     </div>
                 </ul>
-                <a class="active" href="adminsgestion.php"><li><i class="fa-solid fa-user"></i><span>Users</span></li></a>
+                <a class="active" href="adminsgestion.php"><li><i class="fa-solid fa-user"></i><span>Admins</span></li></a>
             </ul>
 
             <div class="nav-footer">
@@ -89,14 +92,13 @@ require 'php/admins.php';
             <div class="management">
                 <span>Credentals</span>
                 <ul id="managementul">
-                    <li  class="active" data-page="page1"><i class="fa-solid fa-user-plus"></i><button>New User</button></li>
+                    <li  class="active" data-page="page1"><i class="fa-solid fa-user-plus"></i><button>New admin</button></li>
                     <li data-page="page2"><i class="fa-solid fa-lock"></i><button>Admins</button></li>
-                    <li data-page="page3"><i class="fa-solid fa-users"></i><button>Teachers</button></li>
                 </ul>
             </div>
             <div class="output">
                 <div class="page page1 active" id="page1">
-                    <span><i class="fa-solid fa-plus"></i>Add a new user</span>
+                    <span><i class="fa-solid fa-plus"></i>Add a new admin</span>
                     <form action="php/process.php" method="post">
                         <?php 
                             if(isset($_SESSION['Error'])){
@@ -119,17 +121,6 @@ require 'php/admins.php';
                                 <span>Email</span>
                             </div>
                             <input type="email" name="email" required placeholder="john@example.dz">
-                        </div>
-                        <span class="hr"></span>
-                        <div class="role">
-                            <div class="field">
-                                <i class="fa-solid fa-user-check"></i>
-                                <span>Role</span>
-                            </div>
-                            <select name="role" id="role">
-                                <option value="teacher">teacher</option>
-                                <option value="admin">admin</option>
-                            </select>
                         </div>
                         <span class="hr"></span>
                         <div class="password">
@@ -157,24 +148,7 @@ require 'php/admins.php';
                             $dbconn = $db->connect();
                             $admin = new Admins($dbconn);
 
-                            $result = $admin->all_users("admin");
-                            foreach ($result as $key => $value) {
-                                echo '<div class="admin"><div class="info"><img src="picts/user.png" alt=""><div class="coords">';
-                                echo "<span class=\"admin-name\">$value[fullname]</span>";
-                                echo "<p class=\"admin-email\">$value[email]</p>";
-                                echo "</div></div><i data-bs-toggle=\"modal\" data-bs-target=\"#deleteRequest\" class=\"fa-solid fa-trash-can\"></i></div>";
-                            }
-                        ?>
-                    </div>
-                </div>
-                <div class="page page2" id="page3">
-                    <span><i class="fa-solid fa-user-group"></i>Current teachers</span>
-                    <div class="admins">
-                        <?php 
-                            $dbconn = $db->connect();
-                            $admin = new Admins($dbconn);
-
-                            $result = $admin->all_users("teacher");
+                            $result = $admin->all_admins();
                             foreach ($result as $key => $value) {
                                 echo '<div class="admin"><div class="info"><img src="picts/user.png" alt=""><div class="coords">';
                                 echo "<span class=\"admin-name\">$value[fullname]</span>";
@@ -195,7 +169,7 @@ require 'php/admins.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body ">
-                    Are you sure you want to delete this user!
+                    Are you sure you want to delete Admin!
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="modalclosebtn" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

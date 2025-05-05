@@ -29,10 +29,7 @@
 <body class="d-flex">
     <div class="side-menu" id="side-menu">
         <div class="header">
-            <div class="logo">
-                <a href=""><img src="picts/newlogo.svg" alt=""></a>
-                <span>ZED</span>
-            </div>
+            <a href="home.php" id="logo"><img src="picts/departement/logo1removed.png" alt=""></a>
             <div class="minimize" id="minimize">
                 <i class="fa-solid fa-angle-left"></i>
                 <i class="fa-solid fa-angle-right"></i>
@@ -61,7 +58,7 @@
                             <a href="requests.php?level=5"><li>M2</li></a>
                     </div>
                 </ul>
-                <a href="adminsgestion.php"><li><i class="fa-solid fa-user"></i><span>Admins</span></li></a>
+                <a href="adminsgestion.php"><li><i class="fa-solid fa-user"></i><span>Users</span></li></a>
             </ul>
 
             <div class="nav-footer">

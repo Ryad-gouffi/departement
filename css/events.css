@@ -1,10 +1,46 @@
-main .container {
+main .container:not(.showoff.container) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 40px;
 }
 
-main .event {
+main .addEvent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid var(--second-color);
+    border-radius: 16px;
+    box-shadow: 1px 1px 8px 1px #0000003b;
+    cursor: pointer;
+}
+main .addEvent img{
+    width: 120px;
+    padding-top: 25%;
+}
+main .addEvent .wrappers{
+    margin-top: 18px;
+    text-align: center;
+}
+main .addEvent span{
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 18px;
+}
+main .addEvent p{
+    font-size: 14px;
+    margin-top: 8px;
+}
+main .addEvent button{
+    background-color: var(--main-color);
+    padding: 8px 30px;
+    border-radius: 12px;
+    color: white;
+    border: none;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+main .container .event {
     border-radius:
         6px;
     overflow:
@@ -12,13 +48,13 @@ main .event {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-main .event img {
+main .container .event img {
     width: 100%;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
 
-main .event span {
+main .container .event span {
     margin-top: 16px;
     display: inline-block;
     font-weight: bold;
@@ -27,7 +63,7 @@ main .event span {
     padding-left: 16px;
 }
 
-main .event p {
+main .container .event p {
     font-size: 15px;
     line-height: 1.6;
     border-bottom:
@@ -43,7 +79,9 @@ main .event p {
     max-height: 100px;
     text-overflow: ellipsis;
 }
-
+main .event,.recent{
+    cursor: pointer;
+}
 main .event .footer {
     margin-top: 18px;
     color: var(--main-color);
@@ -61,4 +99,87 @@ main .event .footer a {
     font-weight: bold;
     font-size: 15px;
 }
+main .showoff{
+    display: flex;
+}
+main .showoff .blog{
+    flex: 1;
+}
+main .showoff .blog span{
+    font-weight: bold;
+    font-size: 26px;
+}
+main .showoff .blog img{
+    margin-top: 18px;
+    max-width: 100%;
+}
+main .showoff .blog p{
+    margin-top: 28px;
+    word-spacing: 2px;
+    line-height: 2;
+    font-size: 19px;
+    color: black;
+    letter-spacing: 0.4px;
+    word-spacing: 0.5px;
+}
+main .eventsblock{
+    margin-left: 40px;
+    margin-top: 50px;
+}
+main .eventsblock .recent{
+    display: flex;
+    max-width: 280px;
+    margin-bottom: 30px;
+}
+main .eventsblock .recent img{
+    width: 120px;
+    margin-right: 12px;
+    border-radius: 8px;
+}
+main .eventsblock .recent span{
+    font-weight: bold;
+}
+main .eventsblock .recent p{
+    overflow: hidden;
+    max-height: 70px;
+    text-overflow: ellipsis;
+    margin-bottom: 0px;
+}
 
+
+
+main #addEvent .editRow{
+    margin-bottom: 12px;
+}
+main #addEvent .rowss{
+    display: flex;
+    align-content: center;
+    margin-bottom: 8px;
+}
+main #addEvent .rowss i{
+    font-size: 22px;
+    color: var(--main-color);
+    margin-right: 8px;
+}
+main #addEvent .editRow input#eventtitle{
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+main #addEvent .editRow textarea{
+    width: 100%;
+    height: 150px;
+    padding: 10px 12px;
+    font-size: 14px;
+    resize: none;
+}
+i.fa-pen-to-square{
+    margin-right: 8px;
+
+}
+#modalupdatebtn{
+    color: var(--main-color);
+    font-weight: bold;
+    background: none;
+    border: none;
+}
