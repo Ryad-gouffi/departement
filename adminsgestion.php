@@ -12,8 +12,8 @@ require 'php/admins.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="shortcut icon" href="picts/newlogo.svg" type="image/x-icon">
+    <title>Users Gestion</title>
+    <link rel="shortcut icon" href="picts/departement/logo1removed.png" type="image/x-icon">
     <link rel="stylesheet" href="libs/bootstrapv5/bootstrap.min.css">
     <link href="css/normalize.css" rel="stylesheet" />
     <link href="css/all.min.css" rel="stylesheet" />

@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="picts/newlogo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="picts/departement/logo1removed.png" type="image/x-icon">
     <link href="css/normalize.css" rel="stylesheet" />
     <link href="css/all.min.css" rel="stylesheet" />
     <link href="css/global.css" rel="stylesheet" />
@@ -24,9 +24,9 @@
                 <form  class="sign-up" id="1" action="php/process.php" method="post" >
                     <input type="hidden" name="target" value="sign-up">
                     <div class="logo">
-                        <a href="#"><img src="picts/newlogo.svg" alt="LOGO"></a>
+                        <a href="#"><img src="picts/departement/logo1removed.png" alt="LOGO"></a>
                     </div>
-                    <span class="kite">Sign-up to Zed</span>
+                    <span class="kite">Sign-up</span>
                     <?php 
                         if(isset($_SESSION['Error'])){
                             echo "<span id='error-span'>$_SESSION[Error]</span>";
@@ -81,6 +81,7 @@
             </div>
         </div>
     </main>
+    
     <script src="js/login.js"></script>
     <script src="js/signup.js"></script>
 </body>

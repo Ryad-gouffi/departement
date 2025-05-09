@@ -12,7 +12,7 @@ if(!isset($_SESSION["role"]) || $_SESSION["role"] != "admin"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="shortcut icon" href="picts/newlogo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="picts/departement/logo1removed.png" type="image/x-icon">
     <link href="css/normalize.css" rel="stylesheet" />
     <link href="css/all.min.css" rel="stylesheet" />
     <link href="css/global.css" rel="stylesheet" />
@@ -34,7 +34,7 @@ if(!isset($_SESSION["role"]) || $_SESSION["role"] != "admin"){
     ?>
     <div class="side-menu" id="side-menu">
         <div class="header">
-            <a href="home.php" id="logo"><img src="picts/departement/logo1removed.png" alt=""></a>
+            <a href="home.php" id="logo"><img id="logoimg" src="picts/departement/logo1removed.png" alt=""></a>
             <div class="minimize" id="minimize">
                 <i class="fa-solid fa-angle-left"></i>
                 <i class="fa-solid fa-angle-right"></i>

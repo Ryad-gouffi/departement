@@ -14,18 +14,20 @@ function getThemeFromCookie() {
             return cookie.trim().substring('theme='.length);
         }
     }
-    return 'dark'; // default is dark
+    return 'light'; // default is dark
 }
-
+let logoo = document.querySelector("#logo img");
 function applyTheme(theme) {
     if (theme === 'light') {
         document.body.classList.add('light');
         sidemenu.classList.add("light")
         container.classList.add("light");
+        logoo.setAttribute("src","picts/departement/logo1removed.png")
     } else {
         document.body.classList.remove('light');
         sidemenu.classList.remove('light');
         container.classList.remove("light");
+        logoo.setAttribute("src","picts/departement/darklogo.png")
     }
 }
 

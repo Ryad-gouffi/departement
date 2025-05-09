@@ -96,3 +96,35 @@ main .newsCard .description {
     margin-bottom: 0;
     color: black;
 }
+
+
+.news  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.news  ul li{
+    background-color: #ececec;
+    border-radius: 6px;
+    /* transition: .2s; */
+}
+
+.news  ul li,
+.news  ul li.bbtn {
+    padding: 10px 15px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.news ul li:hover,
+.news  ul li.bbtn {
+    display: block;
+    background-color: var(--logo2);
+    color: white;
+    cursor: pointer;
+    width: fit-content;
+}

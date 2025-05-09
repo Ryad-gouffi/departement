@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 
-    <link rel="shortcut icon" href="picts/newlogo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="picts/departement/logo1removed.png" type="image/x-icon">
     <link rel="stylesheet" href="libs/bootstrapv5/bootstrap.min.css">
     <link href="css/normalize.css" rel="stylesheet" />
     <link href="css/all.min.css" rel="stylesheet" />

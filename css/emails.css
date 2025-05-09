@@ -126,7 +126,7 @@ main tbody .fa-circle-xmark{
     cursor: initial;
 }
 main tbody tr td.highlight{
-    color: #c6cc16 !important;
+    color: var(--logo3) !important;
 }
 main tbody tr td i.fa-pen-to-square:hover{
     color: var(--logo2)!important;

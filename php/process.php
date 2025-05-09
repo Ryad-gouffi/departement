@@ -189,12 +189,13 @@ try {
             break;
         case 'addnews':
             if(isset($_POST["postDesctiption"])){
+                $level = $_POST["categories"];
                 $content = trim($_POST["postDesctiption"]);
                 if(empty($content)){
                     header("location:../news.php");
                     die();
                 }
-                $result = $news->add_news($content,$_SESSION["id"],0);
+                $result = $news->add_news($content,$_SESSION["id"],$level);
                 header("location:../news.php");
             }
             break;

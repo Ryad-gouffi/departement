@@ -16,12 +16,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Events</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 
-    <link rel="shortcut icon" href="picts/newlogo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="picts/departement/logo1removed.png" type="image/x-icon">
     <link rel="stylesheet" href="libs/bootstrapv5/bootstrap.min.css">
     <link href="css/normalize.css" rel="stylesheet" />
     <link href="css/all.min.css" rel="stylesheet" />
@@ -111,7 +111,7 @@
                         <span><?=$value['event_title']?></span>
                         <p><?=$value['event_content']?></p>
                         <div class="footer">
-                            <a href="">Read More</a>
+                            <a>Read More</a>
                             <i class="fa-solid fa-arrow-right"></i>
                         </div>
                     </div>
@@ -135,8 +135,10 @@
                                 <div class="imgrow rowss">
                                     <i class="fa-solid fa-image"></i>
                                     <span>Select an image :</span>
+                                    <label for="eventimg" class="custom-file-upload">Browse</label>
                                 </div>
-                                <input type="file" name="eventimg" required>
+                                <input type="file" id="eventimg" name="eventimg" accept="image/*" required style="display: none;">
+                                <img id="preview" src="#" alt="Image preview" style="display: none;max-width: 50%;margin-top: 15px;margin-left: auto;margin-right: auto;" />
                             </div>
                             <div class="editRow">
                                 <div class="titlerow rowss">
@@ -176,6 +178,22 @@
         window.location.href = "events.php?postid=" + encodeURIComponent(element.id);
     });
     });
+
+    document.getElementById('eventimg').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        const preview = document.getElementById('preview');
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.display = 'none';
+        }
+    });
+
 </script>
     <script src="libs/bootstrapv5/bootstrap.bundle.min.js"></script>
 </body>

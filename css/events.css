@@ -183,3 +183,14 @@ i.fa-pen-to-square{
     background: none;
     border: none;
 }
+.custom-file-upload {
+    display: block;
+    padding: 4px 10px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    width: fit-content;
+    margin-left: 16px;
+}
