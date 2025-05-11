@@ -23,7 +23,7 @@ class News {
             $sql = $this->conn->prepare("SELECT news.*,user.fullname,user.email,user.role,user.id as userid
                                     FROM news 
                                     JOIN user ON user.id = news.news_publisher 
-                                    WHERE CONCAT(' ', target_level, ' ') LIKE ? 
+                                    WHERE CONCAT(' ', target_level, ' ') LIKE ? OR target_level LIKE '%all%'
                                     ORDER BY news.id DESC");
         $sql->execute([$param]);
         }

@@ -73,7 +73,7 @@
                 if($_SESSION["role"]!="teacher"):
                 ?>
                 <ul id="categories" class="coffee">
-                <a href="news.php?level=all"><li class="bbtn" id="all">ALL</li></a>
+                    <a href="news.php?level=all"><li id="all">ALL</li></a>
                     <a href="news.php?level=l1"><li data-val="l1">L1</li></a>
                     <a href="news.php?level=l2"><li data-val="l2">L2</li></a>
                     <a href="news.php?level=l3"><li data-val="l3">L3</li></a>
@@ -124,7 +124,7 @@
                                 <i class="fa-solid fa-ellipsis"></i>
                             <?php endif;?>
                         </div>
-                        <p class="description"><?=$value['news_content']?></p>
+                        <p class="description"><?=nl2br(htmlspecialchars($value['news_content']))?></p>
                     </div>
                 <?php endforeach;?>
                 

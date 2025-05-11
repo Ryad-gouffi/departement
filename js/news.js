@@ -1,9 +1,26 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // Get the query parameter 'level' from the URL
+    const params = new URLSearchParams(window.location.search);
+    const level = params.get("level");
+    
+    let activeLi;
+    if (level === 'all' || level == null) {
+        activeLi = document.querySelector('#all'); // For the "ALL" button
+    } else {
+        activeLi = document.querySelector(`li[data-val="${level}"]`); // For other levels
+    }
+    if (activeLi) {
+        document.querySelector('#all').classList.remove("bbtn");
+        activeLi.classList.add('bbtn');
+    }
+});
+
 const textarea = document.getElementById("postDesctiption");
 if(textarea){
 
     textarea.addEventListener("input", () => {
-        textarea.style.height = "auto"; // reset height
-        textarea.style.height = (textarea.scrollHeight + 4) + "px"; // adjust height
+        textarea.style.height = "auto";
+        textarea.style.height = (textarea.scrollHeight + 4) + "px";
     });
     const send = document.getElementById("addnews");
     const form = document.getElementById("news");
@@ -13,7 +30,7 @@ if(textarea){
         }
     })
     
-}
+
 
 let catval = document.getElementById("catval");
 if(!catval){
@@ -76,30 +93,8 @@ all.addEventListener("click",()=>{
     });
 })
 }
+}
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Get the query parameter 'level' from the URL
-    const params = new URLSearchParams(window.location.search);
-    const level = params.get("level");
-    
-    
-    // If the 'level' parameter exists
-    if (level) {
-        // Try to select the <li> that matches the 'level'
-        let activeLi;
-        if (level === 'all') {
-            activeLi = document.querySelector('#all'); // For the "ALL" button
-        } else {
-            activeLi = document.querySelector(`li[data-val="${level}"]`); // For other levels
-        }
-
-        // If the matching <li> is found, add the 'btnn' class
-        if (activeLi) {
-            document.querySelector('#all').classList.remove("bbtn");
-            activeLi.classList.add('bbtn');
-        }
-    }
-});
 
 
 function deletenews(id) {

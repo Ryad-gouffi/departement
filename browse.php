@@ -159,7 +159,7 @@ $breadcrumb = implode(' / ', $breadcrumbLinks);
                     <tr>
                         
                         <td><?= htmlspecialchars($item['name']) ?></td>
-                        <td><?= $item['type'] == 'folder' ? '📁 Folder' : '📄 File' ?></td>
+                        <td><?php echo $item['type'] == 'folder' ? '📁 Folder' :'<i class="fa-solid fa-file-pdf"></i> File' ?></td>
                         <td><?= htmlspecialchars($item['author']) ?></td>
                         <td><?= htmlspecialchars($item['description']) ?></td>
                         <td>

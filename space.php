@@ -116,7 +116,7 @@
             <?php if($_SESSION["role"]=="admin"):?>
             <div onclick="window.location.href='analytics.php'" class="box">
                 <i class="fa-solid fa-file-circle-plus fa-4x" ></i>
-                <h3>Documents</h3>
+                <h3>Dashboard</h3>
                 <div class="info">
                     <a href="">View</a>
                 </div>

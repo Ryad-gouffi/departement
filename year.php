@@ -98,7 +98,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="browse.php?path=<?= urlencode($currentPath . '/' . 'M1') ?>">
+                <a href="browse.php?path=<?= urlencode($currentPath . '/' . 'M2') ?>">
                     <div class="box">
                         <div class="image">
                             <img src="picts/M2.png" alt="">
