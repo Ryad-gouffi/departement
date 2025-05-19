@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!isset($_SESSION["role"])){
-        header("location:login.php");
+        $_SESSION["role"] = "default";
     }
     require 'php/models.php';
     require 'php/users.php';
@@ -41,27 +41,31 @@
                     <a href="home.php">Home</a>
                     <a href="news.php">News</a>
                     <a href="events.php">Events</a>
-                    <a href="space.php"><?=ucfirst($_SESSION["role"])?> Space</a>
+                    <a href="space.php"><?= $_SESSION["role"]=="default" ? "Gestion" : ucfirst($_SESSION["role"]) . "Space"?></a>
+                    <?php if($_SESSION["role"]=="default" || $_SESSION["role"]=="student"):?>
+                    <a href="index.php">Document Request</a>
+                </nav>
+                <div class="auth">
+                <i class="fa-solid fa-user-graduate"></i>
+                    <a href="login.php">Teacher Space</a>
+                </div>
+                <?php else:?>
                 </nav>
                 <div class="userCard">
                     <i class="fa-solid fa-user-graduate"></i>
                     <div class="userCords">
                         <p>Welcome</p>
-                        <?php 
-                            if($_SESSION["role"]=="student"){
-                                $user = new User($dbconn);
-                                $result = $user->user_data($_SESSION["matricule"]);
-                                echo "<span>$result[name] $result[surname]</span>";
-                            }
-                            else if($_SESSION["role"]=="teacher" || $_SESSION["role"]=="admin"){
-                                $user = new Admins($dbconn);
-                                $result = $user->admin_data($_SESSION["email"]);
-                                echo "<span>$result[fullname]</span>";
-                            }
+                        <?php
+                        if ($_SESSION["role"] == "teacher" || $_SESSION["role"] == "admin") {
+                            $user = new Admins($dbconn);
+                            $result = $user->admin_data($_SESSION["email"]);
+                            echo "<span>$result[fullname]</span>";
+                        }
                         ?>
                     </div>
                     <a class="logout" href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </div>
+                <?php endif;?>
             </div>
         </div>
     </header>

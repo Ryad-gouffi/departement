@@ -1,18 +1,20 @@
-<?php 
+<?php
 
 require 'php/models.php';
 require 'php/users.php';
 require 'php/demandes.php';
+$db = new Database();
+$dbconn = $db->connect();
+session_start();
 
-session_start() ;
-
-if(!isset($_SESSION["role"]) || $_SESSION["role"] == "admin"){
-    header("location:login.php");
+if (!isset($_SESSION["role"]) || $_SESSION["role"] != "student") {
+    header("location:login.php?stp=true");
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,8 +31,9 @@ if(!isset($_SESSION["role"]) || $_SESSION["role"] == "admin"){
     <link href="css/header.css" rel="stylesheet" />
     <link href="css/index.css" rel="stylesheet" />
 </head>
+
 <body>
-<header>
+    <header>
         <div class="container">
             <a href="home.php" class="logo"><img src="picts/departement/logo1removed.png" alt=""></a>
             <div class="wrapper">
@@ -38,30 +41,31 @@ if(!isset($_SESSION["role"]) || $_SESSION["role"] == "admin"){
                     <a href="home.php">Home</a>
                     <a href="news.php">News</a>
                     <a href="events.php">Events</a>
-                    <a href="space.php"><?=ucfirst($_SESSION["role"])?> Space</a>
+                    <a href="space.php"><?= $_SESSION["role"]=="default" ? "Gestion" : ucfirst($_SESSION["role"]) . "Space"?></a>
+                    <?php if($_SESSION["role"]=="default" || $_SESSION["role"]=="student"):?>
+                    <a href="index.php">Document Request</a>
+                </nav>
+                <div class="auth">
+                <i class="fa-solid fa-user-graduate"></i>
+                    <a href="login.php">Teacher Space</a>
+                </div>
+                <?php else:?>
                 </nav>
                 <div class="userCard">
                     <i class="fa-solid fa-user-graduate"></i>
                     <div class="userCords">
                         <p>Welcome</p>
-                        <?php 
-                            $db = new Database();
-                            $dbconn = $db->connect();
-                            if($_SESSION["role"]=="student"){
-                                $user = new User($dbconn);
-                                $result = $user->user_data($_SESSION["matricule"]);
-                                echo "<span>$result[name] $result[surname]</span>";
-                            }
-                            else if($_SESSION["role"]=="teacher" || $_SESSION["role"]=="admin"){
-                                $user = new Admins($dbconn);
-                                $result = $user->admin_data($_SESSION["email"]);
-                                echo "<span>$result[fullname]</span>";
-                            }
-                            $dbconn = null;
+                        <?php
+                        if ($_SESSION["role"] == "teacher" || $_SESSION["role"] == "admin") {
+                            $user = new Admins($dbconn);
+                            $result = $user->admin_data($_SESSION["email"]);
+                            echo "<span>$result[fullname]</span>";
+                        }
                         ?>
                     </div>
                     <a class="logout" href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </div>
+                <?php endif;?>
             </div>
         </div>
     </header>
@@ -71,16 +75,30 @@ if(!isset($_SESSION["role"]) || $_SESSION["role"] == "admin"){
             <div class="tabs">
                 <button class="tab active" data-tab="page1">Add a request</button>
                 <button class="tab" data-tab="page2">Show Requests</button>
+                <div class="userCardss">
+                    <div class="userCords">
+                        <?php
+                        $db = new Database();
+                        $dbconn = $db->connect();
+                        if ($_SESSION["role"] == "student") {
+                            $user = new User($dbconn);
+                            $result = $user->user_data($_SESSION["matricule"]);
+                            echo "<span>$result[name] $result[surname]</span>";
+                        }
+                        ?>
+                    </div>
+                    <a class="logout" href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                </div>
             </div>
             <div id="page1" class="page page1 active">
                 <form action="php/process.php" method="post">
                     <input type="hidden" name="target" value="demand">
                     <span class="kite">Demande d'un fichier :</span>
-                    <?php 
-                        if(isset($_SESSION["Error"])){
-                            echo "<span id='error-span'>$_SESSION[Error]</span>";
-                            unset($_SESSION["Error"]); 
-                        }
+                    <?php
+                    if (isset($_SESSION["Error"])) {
+                        echo "<span id='error-span'>$_SESSION[Error]</span>";
+                        unset($_SESSION["Error"]);
+                    }
                     ?>
                     <div class="data">
                         <input type="hidden" name="typefichier" id="dropdownval">
@@ -91,24 +109,24 @@ if(!isset($_SESSION["role"]) || $_SESSION["role"] == "admin"){
                             </div>
                             <ul class="">
                                 <li class="active" data-val="certificat">certificat</li>
-                                <li data-val="attestation" >attestation</li>
+                                <li data-val="attestation">attestation</li>
                                 <li data-val="releve">releve</li>
                             </ul>
                         </div>
 
                         <div class="matriculedata">
-                            <input type="email" name ="email" id="email" placeholder="Email">
+                            <input type="email" name="email" id="email" placeholder="Email">
                             <label for="matricule">Email:</label>
                         </div>
                         <div class="matriculedata">
-                            <input type="text" name ="numerotlfn" id="numerotlfn" placeholder="Numero telephone">
+                            <input type="text" name="numerotlfn" id="numerotlfn" placeholder="Numero telephone">
                             <label for="matricule">Numero telephone:</label>
                         </div>
 
-                        
+
                     </div>
-                    <textarea  placeholder="Description Here..." name="descriptions" id="" maxlength="1000"></textarea>
-                    
+                    <textarea placeholder="Description Here..." name="descriptions" id="" maxlength="1000"></textarea>
+
                     <div class="remember">
                         <span id="toggler" class="on">
                             <span class="yes">ON</span>
@@ -120,7 +138,7 @@ if(!isset($_SESSION["role"]) || $_SESSION["role"] == "admin"){
                     </div>
                     <input type="date" value="2024-01-01" name="urgentdate" id="urgentdate">
                     <input type="submit" name="submit" value="Submit">
-                    
+
                 </form>
             </div>
             <div id="page2" class="page page2">
@@ -134,59 +152,54 @@ if(!isset($_SESSION["role"]) || $_SESSION["role"] == "admin"){
                         <th>Cancel</th>
                     </thead>
                     <tbody>
-                        <?php 
-                            //reconnecting to db, it is not good to keep connected to db
-                            // that's why i keep closing and opening connections
-                            $dbconn = $db->connect();
-                            $demand = new Demandes($dbconn);
+                        <?php
+                        //reconnecting to db, it is not good to keep connected to db
+                        // that's why i keep closing and opening connections
+                        $dbconn = $db->connect();
+                        $demand = new Demandes($dbconn);
 
-                            $result = $demand->demande_data_foreign_key($_SESSION["matricule"]);
-                            foreach ($result as $key => $value) {
-                                echo "<tr data-request-id=\"$value[id]\">
+                        $result = $demand->demande_data_foreign_key($_SESSION["matricule"]);
+                        foreach ($result as $key => $value) {
+                            echo "<tr data-request-id=\"$value[id]\">
                                 <td>$value[typefichier]</td>
                                 <td>$value[addon]</td>";
-                                if($value['urgent']===1){
-                                    echo "<td>YES</td>";
-                                }
-                                else{
-                                    echo "<td>NO</td>";
-                                }
-                                echo "<td>$value[observation]</td>";
-                                if($value['statu']==="ready"){
-                                    echo "<td><i class=\"fa-solid fa-circle-check\"></i>$value[statu]</td>";
-                                }
-                                elseif($value['statu']==="inprocess"){
-                                    echo "<td><i class=\"fa-solid fa-arrows-rotate\"></i>In process</td>";
-                                }
-                                elseif($value['statu']==="refused")
-                                {
-                                    echo "<td><i class=\"fa-solid fa-circle-xmark\"></i>Refused</td>";
-                                }
-                                else{
-                                    echo "<td>$value[statu]</td>";
-                                }
-                                echo "<td><i data-bs-toggle=\"modal\" data-bs-target=\"#deleteRequest\" class=\"fa-solid fa-trash-can\"></i></td></tr>";
+                            if ($value['urgent'] === 1) {
+                                echo "<td>YES</td>";
+                            } else {
+                                echo "<td>NO</td>";
                             }
-                            $dbconn = null;
-                            ?>
+                            echo "<td>$value[observation]</td>";
+                            if ($value['statu'] === "ready") {
+                                echo "<td><i class=\"fa-solid fa-circle-check\"></i>$value[statu]</td>";
+                            } elseif ($value['statu'] === "inprocess") {
+                                echo "<td><i class=\"fa-solid fa-arrows-rotate\"></i>In process</td>";
+                            } elseif ($value['statu'] === "refused") {
+                                echo "<td><i class=\"fa-solid fa-circle-xmark\"></i>Refused</td>";
+                            } else {
+                                echo "<td>$value[statu]</td>";
+                            }
+                            echo "<td><i data-bs-toggle=\"modal\" data-bs-target=\"#deleteRequest\" class=\"fa-solid fa-trash-can\"></i></td></tr>";
+                        }
+                        $dbconn = null;
+                        ?>
                     </tbody>
                 </table>
                 <!-- Delete Request Modal -->
                 <div class="modal fade" id="deleteRequest" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog ">
                         <div class="modal-content">
-                        <div class="modal-header text-danger">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-trash"></i>Delete Confirmation</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body ">
-                            Are you sure you want to Cancel the request: 
-                            <p id="modal-row-fullname"></p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" id="modalclosebtn" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" id="modaldeletebtn"  class="btn btn-danger">Delete</button>
-                        </div>
+                            <div class="modal-header text-danger">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-trash"></i>Delete Confirmation</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body ">
+                                Are you sure you want to Cancel the request:
+                                <p id="modal-row-fullname"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="modalclosebtn" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" id="modaldeletebtn" class="btn btn-danger">Delete</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -196,4 +209,5 @@ if(!isset($_SESSION["role"]) || $_SESSION["role"] == "admin"){
     <script src="libs/bootstrapv5/bootstrap.bundle.min.js"></script>
     <script src="js/index.js"></script>
 </body>
+
 </html>

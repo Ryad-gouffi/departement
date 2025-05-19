@@ -45,7 +45,12 @@ try {
                             $_SESSION["role"] = isset($result["matricule"]) ? "student" : $result["role"];
                             $_SESSION["role"] == "student" ? ($_SESSION["matricule"] = $_POST["userID"]) : ($_SESSION["email"] = $_POST["userID"]);
                             $_SESSION["id"] = $result["id"];
-                            header("location:../home.php");
+                            if(isset($_GET["stp"]) && $_GET["stp"]=="true" && $_SESSION["role"] == "student"){
+                                header("location:../index.php");
+                            }
+                            else{
+                                header("location:../home.php");
+                            }
                             die();
                         } else {
                             $_SESSION["Error"] = "wrong password";

@@ -399,3 +399,35 @@ main .modal .modal-content .modal-footer #modalclosebtn{
         min-width: fit-content;
     }
 }
+
+
+.tabs .userCardss{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.tabs .userCardss i{
+    font-size: 22px;
+}
+
+.tabs .userCardss a.logout{
+    margin-left: 16px;
+}
+.tabs .userCardss p{
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: black;
+}
+.tabs .userCardss span{
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+    display: block;
+    color: var(--main-color-alt);
+}
+.tabs .userCardss a:hover{
+    color: var(--color);
+    transition-duration: .15s;
+}

@@ -15,16 +15,22 @@
     <i id="sun" class="fa-solid fa-sun active"></i>
     <?php 
     session_start();
-    if(isset($_SESSION["role"]))
+    if(isset($_SESSION["role"]) && $_SESSION["role"]!="default")
         header("location:home.php");
     ?>
     <main>
         <div class="container">
             <div class="containerform">
-                <form id="1" action="php/process.php" method="post" >
+                <?php if(isset($_GET["stp"]) && $_GET["stp"]=="true"){
+                    echo '<form id="1" action="php/process.php?stp=true" method="post" >';
+                }
+                    else{
+                        echo '<form id="1" action="php/process.php" method="post" >';
+                    }
+                    ?>
                     <input type="hidden" name="target" value="login">
                     <div class="logo" id="logo">
-                        <a href="#"><img src="picts/departement/logo1removed.png" alt="LOGO"></a>
+                        <a href="home.php"><img src="picts/departement/logo1removed.png" alt="LOGO"></a>
                     </div>
                     <span class="kite">Login</span>
                     <?php 

@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if(isset($_SESSION["role"]))
+    if(isset($_SESSION["role"]) && $_SESSION["role"]!="default")
         header("location:home.php");
 ?>
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
                 <form  class="sign-up" id="1" action="php/process.php" method="post" >
                     <input type="hidden" name="target" value="sign-up">
                     <div class="logo">
-                        <a href="#"><img src="picts/departement/logo1removed.png" alt="LOGO"></a>
+                        <a href="home.php"><img src="picts/departement/logo1removed.png" alt="LOGO"></a>
                     </div>
                     <span class="kite">Sign-up</span>
                     <?php 
